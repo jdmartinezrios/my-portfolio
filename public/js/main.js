@@ -1,6 +1,7 @@
 var indexSlider = 1;
 var indexSliderSkills = 1;
-var timer, timerSkills;
+var indexSliderProjects = 1;
+var timer, timerSkills, timerProjects;
 
 window.onload = onInit();
 
@@ -9,8 +10,10 @@ function onInit() {
     setTimeToWebSite();
     showSlides(indexSlider);
     showSlidesSkills(indexSliderSkills);
+    showSlidesProjects(indexSliderProjects);
     initTimer();
     initTimerSKills();
+    initTimerProjects();
 }
 
 function showSlides(index) {
@@ -102,4 +105,42 @@ function scrollUp() {
         e.stopPropagation();
         return;
     }, false);
+}
+
+
+function showSlidesProjects(index) {
+    var i;
+    const slides = document.getElementsByClassName('projects-slide');
+    const dots = document.getElementsByClassName("dot_projects");
+
+    if (index > slides.length) indexSliderProjects = 1;
+    if (index < 1) indexSliderProjects = slides.length;
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active_projects", "");
+    }
+    slides[indexSliderProjects - 1].style.display = 'block';
+    dots[indexSliderProjects - 1].className += " active_projects";
+}
+
+function plusSlidesProjects(value) {
+    closeTimerProjects();
+    showSlidesProjects(indexSliderProjects += value);
+}
+
+function currentSlideProjects(value) {
+    closeTimerProjects();
+    showSlidesProjects(indexSliderProjects = value)
+}
+
+function initTimerProjects() {
+    timerProjects = setInterval(() => plusSlidesProjects(1), 10000);
+}
+
+function closeTimerProjects() {
+    clearInterval(timerProjects);
+    initTimerProjects();
 }
