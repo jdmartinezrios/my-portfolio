@@ -19,7 +19,7 @@
     <header id="header">
         <nav>
             <a id="home">Home</a>
-            <a href="./public/assets/files/CV.docx" download>Download my full resume</a>
+            <a href="./public/assets/files/CV.pdf" download>Download my full resume</a>
         </nav>
     </header>
     <section class="main-container" id="main-container">
@@ -818,7 +818,7 @@
     </section>
     <footer>
         <div>
-            <a href="./public/assets/files/CV.docx" download>Download my full resume</a>
+            <a href="./public/assets/files/CV.pdf" download>Download my full resume</a>
             <p>© <span id="year"></span> by Juan David Martinez Rios.</p>
         </div>
         <div>
@@ -855,7 +855,6 @@
         var form = $('#contact-form');
 
         $(form).submit(() => {
-            console.log("EPPAAA")
             event.preventDefault();
             var formData = $(form).serialize();
             $.ajax({
